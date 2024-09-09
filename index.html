@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>居中并更改颜色的文本</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+        }
+
+        .center-container {
+            display: flex;
+            justify-content: center; /* 水平居中 */
+            align-items: center; /* 垂直居中 */
+            height: 100%;
+        }
+
+        .center-text {
+            font-size: 100px; /* 设置字体大小 */
+            color: green; /* 设置文本颜色 */
+            animation: flash 1s infinite; /* 添加闪烁效果 */
+        }
+
+        @keyframes flash {
+            0%, 100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="center-container">
+        <p id="text" class="center-text">张佳琦</p>
+    </div>
+
+    <script>
+        const words = ["张佳琦", "傻逼"];
+        let index = 0;
+
+        function changeWord() {
+            index = (index + 1) % words.length;
+            document.getElementById("text").textContent = words[index];
+        }
+
+        // 每0.5秒切换一次文本
+        setInterval(changeWord, 500);
+    </script>
+</body>
+</html>
